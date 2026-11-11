@@ -1,0 +1,23 @@
+[
+  {"code":"pl","name":"Polski"},
+  {"code":"en","name":"English"},
+  {"code":"th","name":"ไทย"},
+  {"code":"cs","name":"Čeština"},
+  {"code":"sk","name":"Slovenčina"},
+  {"code":"sl","name":"Slovenščina"},
+  {"code":"hr","name":"Hrvatski"},
+  {"code":"bs","name":"Bosanski"},
+  {"code":"sr","name":"Српски"},
+  {"code":"cnr","name":"Crnogorski"},
+  {"code":"bg","name":"Български"},
+  {"code":"mk","name":"Македонски"},
+  {"code":"ru","name":"Русский"},
+  {"code":"uk","name":"Українська"},
+  {"code":"be","name":"Беларуская"},
+  {"code":"csb","name":"Kaszëbsczi"},
+  {"code":"szl","name":"Ślōnski"},
+  {"code":"hsb","name":"Hornjoserbšćina"},
+  {"code":"dsb","name":"Dolnoserbšćina"},
+  {"code":"rue","name":"Русиньскый (карпатскый)"},
+  {"code":"rsk","name":"Руски (панонски)"}
+]

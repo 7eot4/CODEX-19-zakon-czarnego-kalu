@@ -1,0 +1,37 @@
+[
+  {
+    "id": "dekret-nocnej-kapituly",
+    "category": "Dekrety",
+    "categoryKey": "t032",
+    "mark": "†",
+    "bodyCount": 5
+  },
+  {
+    "id": "nekromancja-stosowana",
+    "category": "Rozważania",
+    "categoryKey": "t033",
+    "mark": "☾",
+    "bodyCount": 4
+  },
+  {
+    "id": "dekret-001",
+    "category": "Dekrety",
+    "categoryKey": "t032",
+    "mark": "§",
+    "bodyCount": 5
+  },
+  {
+    "id": "pierwszy-znak",
+    "category": "Kronika",
+    "categoryKey": "t004",
+    "mark": "I",
+    "bodyCount": 4
+  },
+  {
+    "id": "sztuka-dystansu",
+    "category": "Rozważania",
+    "categoryKey": "t033",
+    "mark": "?",
+    "bodyCount": 4
+  }
+]

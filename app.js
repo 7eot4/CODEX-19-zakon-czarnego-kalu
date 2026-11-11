@@ -1,10 +1,6 @@
-const entries=[
-{id:'dekret-nocnej-kapituly',category:'Dekrety',mark:'†',title:'Dekret nocny: wstyd zostaje odwołany',intro:'Kapituła uchyla obowiązek przepraszania za własną tożsamość. Moralna panika nie ma prawa weta.',body:['My, samozwańcza Kapituła Zakonu Czarnego Kału, po konsultacji z jednym szkieletem i ostatnią działającą komórką zdrowego rozsądku, ogłaszamy koniec pokuty za cudze uprzedzenia.','§ 1. Gejowska duma nie jest wnioskiem o zatwierdzenie. Chłopak może kochać chłopaka bez pieczęci komitetu do spraw cudzych sypialni.','§ 2. Kto krzyczy o upadku cywilizacji na widok dwóch trzymających się za ręce mężczyzn, powinien sprawdzić, czy jego cywilizacja nie została zbudowana z mokrego kartonu.','§ 3. Zakon wymaga lojalności wobec zasad: zgody, wolności i wzajemnego szacunku. Żadna godność zakonna nie zwalnia z myślenia.','Dekret podpisano Czarną Pieczęcią. Odwołania przyjmuje Wielki Kanclerz Nie Wasza Sprawa.']},
-{id:'nekromancja-stosowana',category:'Rozważania',mark:'☾',title:'Nekromancja stosowana: trup dogmatu nie wstanie',intro:'Wskrzeszenie szkieletu to pestka. Przywrócenie sensu martwym uprzedzeniom przekracza możliwości Zakonu.',body:['W naszej fikcyjnej krypcie nekromanta wskrzesza memy, dowcipy i odwagę do bycia sobą. Nie otrzymał jednak budżetu na reanimację poglądu, że cudza orientacja jest sprawą publicznego trybunału.','Szkielet ma tę przewagę nad hipokrytą, że przynajmniej nie udaje, iż posiada kręgosłup moralny. To nisko zawieszona poprzeczka, ale Kapituła odnotowuje każdy sukces.','Gejostwo nie jest klątwą. Klątwą jest przekonanie, że własny lęk daje prawo do zarządzania cudzą miłością. Tego zaklęcia nie odprawiamy.','Reguła Czarnego Kału brzmi: wskrzeszaj humor, grzeb pogardę, pilnuj zgody. Jeśli rytuał wymaga odebrania komuś godności, to rytuał jest do wyrzucenia.']},
-{id:'dekret-001',category:'Dekrety',mark:'§',title:'Dekret nr 001: o ustanowieniu powagi',intro:'Kapituła postanawia, że od dziś sprawy błahe będą rozpatrywane z pełną ceremonialnością.',body:['Z dniem ogłoszenia niniejszego dekretu ustanawia się powagę jako oficjalną oprawę wszelkich działań Zakonu. Sama treść działań pozostaje dowolna, ze wskazaniem na rozsądny brak rozsądku.','§ 1. Każde spotkanie może zostać uznane za posiedzenie Kapituły, jeżeli choć jedna osoba powie: „dobra, słuchajcie”.','§ 2. Protokół sporządza ten, kto pierwszy zapyta, czy ktoś to zapisuje. Brak protokołu nie unieważnia udanego spotkania.','§ 3. Godności nadaje się z umiarem. Dopuszcza się funkcję Wielkiego Strażnika Ładowarki oraz Pełnomocnika do Spraw Tego, Co Miało Być Na Chwilę.','Dekret wchodzi w życie natychmiast po przeczytaniu. Można go zaskarżyć, ale trzeba mieć lepszy żart.']},
-{id:'pierwszy-znak',category:'Kronika',mark:'I',title:'Na początku był szkic. I strzała.',intro:'Każda legenda potrzebuje początku. Nasza mieściła się w jednym zdjęciu z WhatsAppa.',body:['Nie było konkursu, komisji ani prezentacji strategicznej na czterdzieści slajdów. Był odręczny rysunek kolegi: znak, strzała, kilka smug i trzy litery. ZCK.','Ten szkic stał się punktem wyjścia dla naszego emblematu. Zachowaliśmy jego najważniejsze motywy: stylizowaną formę, ukośną strzałę i cztery smugi. Dodaliśmy oprawę, która traktuje temat z ceremonialną przesadą.','To cała metoda Zakonu: wziąć wspólny żart, nadać mu własny język i sprawdzić, jak daleko poniesie go wyobraźnia.','Niniejszy zapis inauguruje kronikę. Dalsze wydarzenia pozostają w gestii życia i aktywności czatu.']},
-{id:'sztuka-dystansu',category:'Rozważania',mark:'?',title:'Krótki traktat o sztuce dystansu',intro:'Czy inicjatywa bez celu może mieć kierunek? Owszem. Wskazuje go strzała w herbie.',body:['Wiele rzeczy trzeba w życiu traktować serio. Właśnie dlatego przydaje się miejsce, w którym można na chwilę odłożyć urzędowy ton, a potem natychmiast założyć go ponownie — dla żartu.','Dystans nie polega na tym, że nic nas nie obchodzi. Polega na umiejętności zauważenia, że tytuł Wielkiego Kanclerza Spraw Nieistotnych nie czyni nikogo ważniejszym od osoby, która po prostu przyszła posiedzieć.','Nasza reguła jest prosta: dobry żart zostawia miejsce dla wszystkich przy stole. Jeśli ktoś nie ma ochoty się śmiać, nie trzeba powoływać komisji wyjaśniającej.','A gdy ktoś zapyta, po co to wszystko? Można odpowiedzieć: żeby było co wspominać. To całkiem poważny powód.']}
-];
+const {entries,messages}=window.ZCK_LOCALE;
+const t=key=>messages[key];
+const escapeHTML=value=>String(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const $=selector=>document.querySelector(selector);
 const posts=$('#posts'), modal=$('#article'), search=$('#search');
 const motionQuery=window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -13,7 +9,7 @@ try { reducedMotion ||= localStorage.getItem('zck-reduce-motion')==='true'; } ca
 function applyMotion(){
   document.documentElement.classList.toggle('reduce-motion',reducedMotion);
   $('#motion-toggle').setAttribute('aria-pressed',String(reducedMotion));
-  $('#motion-toggle').textContent=reducedMotion?'Animacje ograniczone':'Ogranicz animacje';
+  $('#motion-toggle').textContent=reducedMotion?t('motionOff'):t('motionOn');
 }
 applyMotion();
 $('#motion-toggle').addEventListener('click',()=>{
@@ -22,19 +18,19 @@ $('#motion-toggle').addEventListener('click',()=>{
   applyMotion();
 });
 motionQuery.addEventListener('change',event=>{reducedMotion=event.matches;applyMotion()});
-const normalize=text=>text.toLocaleLowerCase('pl').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ł/g,'l');
+const normalize=text=>text.toLocaleLowerCase(document.documentElement.lang).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ł/g,'l');
 function render(){
   const terms=normalize(search.value.trim()).split(/\s+/).filter(Boolean);
-  const found=entries.filter(e=>(category==='all'||e.category===category)&&terms.every(term=>normalize([e.title,e.intro,e.category,...e.body].join(' ')).includes(term)));
+  const found=entries.filter(e=>(category==='all'||e.categoryId===category)&&terms.every(term=>normalize([e.title,e.intro,e.category,...e.body].join(' ')).includes(term)));
   posts.replaceChildren();
   found.forEach(e=>{
     const article=document.createElement('article'); article.className='post';
     const minutes=Math.max(1,Math.ceil(e.body.join(' ').split(/\s+/).length/180));
-    article.innerHTML=`<div class="post-art" aria-hidden="true"><span>${e.mark}</span></div><div class="post-meta">${e.category.toUpperCase()} / 11.11.2026 / ${minutes} MIN CZYTANIA</div><h3>${e.title}</h3><p>${e.intro}</p><button class="read" data-id="${e.id}" aria-label="Czytaj: ${e.title}">Czytaj wpis <span>↗</span></button>`;
+    article.innerHTML=`<div class="post-art" aria-hidden="true"><span>${e.mark}</span></div><div class="post-meta">${escapeHTML(e.category.toLocaleUpperCase(document.documentElement.lang))} / 11.11.2026 / ${minutes} ${escapeHTML(t('minutes'))}</div><h3>${escapeHTML(e.title)}</h3><p>${escapeHTML(e.intro)}</p><button class="read" data-id="${e.id}" aria-label="${escapeHTML(t('readLabel'))} ${escapeHTML(e.title)}">${escapeHTML(t('read'))} <span>↗</span></button>`;
     posts.append(article);
   });
   $('#empty-results').hidden=found.length>0;
-  $('#result-count').textContent=`Wyniki: ${found.length} z ${entries.length}`;
+  $('#result-count').textContent=t('results').replace('{count}',found.length).replace('{total}',entries.length);
 }
 function setCategory(value){
   category=value;
@@ -51,9 +47,9 @@ function articleURL(id){const url=new URL(location.href);url.searchParams.set('w
 function openArticle(id,trigger=null,updateURL=true){
   const e=entries.find(entry=>entry.id===id);if(!e)return;
   currentEntry=e;opener=trigger;
-  $('#article-body').innerHTML=`<p class="eyebrow">${e.category} / FIKCJA REDAKCYJNA / 11.11.2026</p><h2 id="article-title">${e.title}</h2><div class="article-tools"><button class="text-control" id="share-article">Udostępnij wpis</button><button class="text-control" id="copy-article">Kopiuj link</button></div>${e.body.map(p=>`<p>${p}</p>`).join('')}`;
+  $('#article-body').innerHTML=`<p class="eyebrow">${escapeHTML(e.category)} / ${escapeHTML(t('fiction'))} / 11.11.2026</p><h2 id="article-title">${escapeHTML(e.title)}</h2><div class="article-tools"><button class="text-control" id="share-article">${escapeHTML(t('share'))}</button><button class="text-control" id="copy-article">${escapeHTML(t('copyLink'))}</button></div>${e.body.map(p=>`<p>${escapeHTML(p)}</p>`).join('')}`;
   $('#share-article').addEventListener('click',shareArticle);
-  $('#copy-article').addEventListener('click',()=>copyText(articleURL(e.id),'Link do wpisu skopiowany.'));
+  $('#copy-article').addEventListener('click',()=>copyText(articleURL(e.id),t('linkCopied')));
   modal.setAttribute('aria-labelledby','article-title');
   if(!modal.open)modal.showModal();modal.scrollTop=0;
   if(updateURL)history.replaceState(null,'',articleURL(e.id));
@@ -78,17 +74,17 @@ function notify(message){
 async function copyText(text,message){
   try{await navigator.clipboard.writeText(text);notify(message)}
   catch{
-    notify('Skopiuj zaznaczony tekst:');clearTimeout(noticeTimer);
-    const field=document.createElement('input');field.value=text;field.readOnly=true;field.setAttribute('aria-label','Tekst do skopiowania');
-    const close=document.createElement('button');close.className='text-control';close.textContent='Zamknij';close.addEventListener('click',()=>$('#notice').hidden=true);
+    notify(t('copyManual'));clearTimeout(noticeTimer);
+    const field=document.createElement('input');field.value=text;field.readOnly=true;field.setAttribute('aria-label',t('copyField'));
+    const close=document.createElement('button');close.className='text-control';close.textContent=t('close');close.addEventListener('click',()=>$('#notice').hidden=true);
     $('#notice').append(field,close);field.focus();field.select();
   }
 }
-$('#copy-motto').addEventListener('click',()=>copyText('O to słowo z Gdańska!','Maksyma skopiowana.'));
+$('#copy-motto').addEventListener('click',()=>copyText('O to słowo z Gdańska!',t('mottoCopied')));
 async function shareArticle(){
   if(!currentEntry)return;const data={title:currentEntry.title,url:articleURL(currentEntry.id)};
   if(navigator.share){try{await navigator.share(data);return}catch(error){if(error.name==='AbortError')return}}
-  await copyText(data.url,'Link do wpisu skopiowany.');
+  await copyText(data.url,t('linkCopied'));
 }
 render();
 openArticle(new URL(location.href).searchParams.get('wpis'),null,false);
