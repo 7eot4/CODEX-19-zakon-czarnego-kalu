@@ -38,12 +38,13 @@ def build(code):
         head=f'<link rel="canonical" href="{url(code,page)}">'
         head+=''.join(f'<link rel="alternate" hreflang="{l["code"]}" href="{url(l["code"],page)}">' for l in LANGUAGES)
         head+=f'<link rel="alternate" hreflang="x-default" href="{url("pl",page)}">'
-        head+=f'<link rel="stylesheet" href="{prefix}languages.css?v=1">'
+        head+=f'<link rel="stylesheet" href="{prefix}languages.css?v=2">'
         template=template.replace('</head>',head+'</head>')
         switch=selector(code,page,words)
         if page=='index.html':
             template=template.replace('</nav></header>','</nav>'+switch+'</header>')
-            template=template.replace('<script src=', '<script src="locale.js?v=languages-1"></script><script src=',1)
+            locale_version='serbian-2' if code=='sr' else 'languages-1'
+            template=template.replace('<script src=', f'<script src="locale.js?v={locale_version}"></script><script src=',1)
             if code!='pl':template=template.replace('</footer>','<p class="translation-note">'+html.escape(words['ui.translationNote'])+'</p></footer>')
         else:
             template=template.replace('<h1>',switch+'<h1>',1)
