@@ -1,5 +1,5 @@
 """Build static localized pages from one Polish source and reviewed draft dictionaries."""
-import html,json,re
+import hashlib,html,json,re
 from pathlib import Path
 ROOT=Path(__file__).resolve().parent.parent
 DATA=ROOT/'i18n'
@@ -24,6 +24,22 @@ def build(code):
     for key,value in words.items():
         assert isinstance(value,str) and value.strip(),(code,key)
         assert set(re.findall(r'\{\w+\}',value))==set(re.findall(r'\{\w+\}',SOURCE[key])),(code,key,'Placeholders')
+    review_path=DATA/'review-status.json'
+    if review_path.exists():
+        review=json.loads(review_path.read_text(encoding='utf-8'))['languages'].get(code,{})
+        if review.get('pass2')=='self-reviewed':
+            current=hashlib.sha256(json.dumps(words,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+            assert current==review.get('approvedContentHash'),(code,'Text changed after editorial review; review it again before publishing')
+    entries=[]
+    for i,post in enumerate(POSTS):
+        entries.append({'id':post['id'],'categoryId':post['category'],'category':words[post['categoryKey']],'mark':post['mark'],
+            'title':words[f'p{i}.title'],'intro':words[f'p{i}.intro'],
+            'body':[words[f'p{i}.b{j}'] for j in range(post['bodyCount'])]})
+    payload={'code':code,'messages':{k[3:]:v for k,v in words.items() if k.startswith('ui.')},'entries':entries}
+    locale_script='window.ZCK_LOCALE='+json.dumps(payload,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c')+';\n'
+    locale_version=hashlib.sha256(locale_script.encode('utf-8')).hexdigest()[:12]
+    css_version=hashlib.sha256((ROOT/'languages.css').read_bytes()).hexdigest()[:12]
+    app_version=hashlib.sha256((ROOT/'app.js').read_bytes()).hexdigest()[:12]
     out=ROOT if code=='pl' else ROOT/code
     out.mkdir(exist_ok=True)
     for page in ('index.html','wizytowki.html'):
@@ -31,20 +47,24 @@ def build(code):
         template=re.sub(r'\{\{([\w.]+)\}\}',lambda m:html.escape(words[m[1]],quote=True),template)
         template=template.replace('lang="pl"',f'lang="{code}"',1)
         template=template.replace('style.css?v=interactive-1','style.css?v=languages-1')
-        template=template.replace('app.js?v=interactive-1','app.js?v=languages-1')
+        template=template.replace('app.js?v=interactive-1',f'app.js?v={app_version}')
         if code!='pl':
             template=re.sub(r'((?:src|href)=")((?:assets/|style\.css|app\.js)[^"]*)"',r'\1../\2"',template)
         prefix='' if code=='pl' else '../'
         head=f'<link rel="canonical" href="{url(code,page)}">'
         head+=''.join(f'<link rel="alternate" hreflang="{l["code"]}" href="{url(l["code"],page)}">' for l in LANGUAGES)
         head+=f'<link rel="alternate" hreflang="x-default" href="{url("pl",page)}">'
-        head+=f'<link rel="stylesheet" href="{prefix}languages.css?v=2">'
+        head+=f'<link rel="stylesheet" href="{prefix}languages.css?v={css_version}">'
         template=template.replace('</head>',head+'</head>')
         switch=selector(code,page,words)
         if page=='index.html':
             template=template.replace('</nav></header>','</nav>'+switch+'</header>')
-            locale_version='serbian-2' if code=='sr' else 'languages-1'
             template=template.replace('<script src=', f'<script src="locale.js?v={locale_version}"></script><script src=',1)
+            particles=[]
+            for i in range(24):
+                x=(i*37+9)%100;duration=21+(i*7)%17;delay=-((i*11)%37);drift=(i*13)%61-30;size=1+(i%3)
+                particles.append(f'<span style="--x:{x}%;--fall-duration:{duration}s;--fall-delay:{delay}s;--drift:{drift}px;--particle-size:{size}px"></span>')
+            template=template.replace('<body>','<body><div class="falling-background" aria-hidden="true">'+''.join(particles)+'</div>',1)
             if code!='pl':template=template.replace('</footer>','<p class="translation-note">'+html.escape(words['ui.translationNote'])+'</p></footer>')
         else:
             template=template.replace('<h1>',switch+'<h1>',1)
@@ -52,13 +72,7 @@ def build(code):
             if code!='pl':template=template.replace('</main>','</main><p class="controls translation-note">'+html.escape(words['ui.translationNote'])+'</p>')
         template=template.replace('</body>',f'<script src="{prefix}language.js?v=1"></script></body>')
         (out/page).write_text(template,encoding='utf-8')
-    entries=[]
-    for i,post in enumerate(POSTS):
-        entries.append({'id':post['id'],'categoryId':post['category'],'category':words[post['categoryKey']],'mark':post['mark'],
-            'title':words[f'p{i}.title'],'intro':words[f'p{i}.intro'],
-            'body':[words[f'p{i}.b{j}'] for j in range(post['bodyCount'])]})
-    payload={'code':code,'messages':{k[3:]:v for k,v in words.items() if k.startswith('ui.')},'entries':entries}
-    (out/'locale.js').write_text('window.ZCK_LOCALE='+json.dumps(payload,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c')+';\n',encoding='utf-8')
+    (out/'locale.js').write_text(locale_script,encoding='utf-8')
     print('BUILT',code,len(words),'strings,',len(entries),'articles')
 if __name__=='__main__':
     for language in LANGUAGES:build(language['code'])

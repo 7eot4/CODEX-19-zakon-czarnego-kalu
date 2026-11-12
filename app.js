@@ -18,6 +18,9 @@ $('#motion-toggle').addEventListener('click',()=>{
   applyMotion();
 });
 motionQuery.addEventListener('change',event=>{reducedMotion=event.matches;applyMotion()});
+function updatePageVisibility(){document.documentElement.classList.toggle('page-hidden',document.hidden)}
+document.addEventListener('visibilitychange',updatePageVisibility);
+updatePageVisibility();
 const normalize=text=>text.toLocaleLowerCase(document.documentElement.lang).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ł/g,'l');
 function render(){
   const terms=normalize(search.value.trim()).split(/\s+/).filter(Boolean);

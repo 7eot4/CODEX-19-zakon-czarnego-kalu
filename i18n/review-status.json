@@ -1,0 +1,150 @@
+{
+  "policy": "EDITORIAL-POLICY.md",
+  "reviewType": "editorial self-review; not native-speaker certification",
+  "languages": {
+    "pl": {
+      "pass1": "complete",
+      "pass2": "self-reviewed",
+      "approvedContentHash": "6efe6fc31e3931786fba53004e0af25b62597051d74045d73e123aaccaa12299",
+      "issues": [],
+      "pass1Notes": "Read all 162 fields; adapted jokes, register, institutional terms and interface; preserved intentional ceremonial titles.",
+      "pass2Notes": "Re-read the full target text separately. Removed residual awkward idioms, physical-distance imagery and clumsy noun chains; checked tone, jokes, consent, UI and card instructions. No external native-speaker certification. Final idiom check: rendered giving a joke its own language as building its own story, rather than preserving a literal marketing metaphor."
+    },
+    "en": {
+      "pass1": "complete",
+      "pass2": "self-reviewed",
+      "approvedContentHash": "3e0641bc98e289246a2b46629ab390898dea8f3e1a1a36f723d465c1538d77d3",
+      "issues": [],
+      "pass1Notes": "Read all 162 fields; adapted jokes, register, institutional terms and interface; preserved intentional ceremonial titles.",
+      "pass2Notes": "Re-read the full target text separately. Removed residual awkward idioms, physical-distance imagery and clumsy noun chains; checked tone, jokes, consent, UI and card instructions. No external native-speaker certification. Final idiom check: rendered giving a joke its own language as building its own story, rather than preserving a literal marketing metaphor."
+    },
+    "th": {
+      "pass1": "complete",
+      "pass2": "self-reviewed",
+      "approvedContentHash": "b93ce6afa59a796dc3f073a3c389408b6c60fa2c6feb7ddbcd182e9e39a83d97",
+      "issues": [],
+      "pass1Notes": "Read all 162 fields; replaced abstract brotherhood/chronicle terminology with familiar fantasy/group vocabulary; rewrote spoken clauses, consent and coming-out idioms.",
+      "pass2Notes": "Re-read all target fields. Replaced a translated moral-backbone construction with a Thai bone/principles joke; tightened brain-cell, self-importance and group-story idioms; avoided literal closet/physical-distance translations; checked neutral address and consent. Self-review, not independent native review."
+    },
+    "cs": {
+      "pass1": "complete",
+      "pass2": "self-reviewed",
+      "approvedContentHash": "dc41e432043e481953c5f0ce69adc4c65f2c6ced0edca903562cf1e1a7157245",
+      "issues": [],
+      "pass1ContentHash": "f660b420955deec405d834aebe8a06a5c18188dd7fab6ce402133470549c67c5",
+      "pass1Notes": "Read all fields against the source; rewrote chapter/order/clear/charger/distance calques, articles and UI in the target language. Second target-only pass remains required.",
+      "pass2Notes": "Re-read all target text. Adjusted idioms, institutional meaning, native punctuation and conversational rhythm; checked cases, UI, consent and coming-out language. Reviewed local usage of coming-out terms (Inakosť/Legebitra/Czech spoken-media context). This is not native-speaker certification. Final idiom check: rendered giving a joke its own language as building its own story, rather than preserving a literal marketing metaphor."
+    },
+    "sk": {
+      "pass1": "complete",
+      "pass2": "self-reviewed",
+      "approvedContentHash": "c95af90b8e5895fa10fe77338fe91118f80adf92b17bff8d82e66bfc85adeb5f",
+      "issues": [],
+      "pass1ContentHash": "482c174ea3fbd5306d3ac12adebc3b9cee69e62762d19b2b0093e79f18413acc",
+      "pass1Notes": "Read all fields against the source; rewrote chapter/order/clear/charger/distance calques, articles and UI in the target language. Second target-only pass remains required.",
+      "pass2Notes": "Re-read all target fields. Fixed a split-word typo, trocha/trochu agreement, natural moral-chrbtica phrasing and repetitive council/order wording; reviewed cases, UI infinitives, slang restraint, consent and coming-out wording. Self-review, not independent native review. Final idiom check: rendered giving a joke its own language as building its own story, rather than preserving a literal marketing metaphor."
+    },
+    "sl": {
+      "pass1": "complete",
+      "pass2": "self-reviewed",
+      "approvedContentHash": "abd8f519c65af2146bef9b2a6e422487998a6ddf3cfa0c8c1f4a59dcdfec5e99",
+      "issues": [],
+      "pass1ContentHash": "43b857cf9b035375460eac8dba5189c1f6a7873350e81cc2e7ab1e13a7809d42",
+      "pass1Notes": "Read all fields against the source; rewrote chapter/order/clear/charger/distance calques, articles and UI in the target language. Second target-only pass remains required.",
+      "pass2Notes": "Re-read all target text. Adjusted idioms, institutional meaning, native punctuation and conversational rhythm; checked cases, UI, consent and coming-out language. Reviewed local usage of coming-out terms (Inakosť/Legebitra/Czech spoken-media context). This is not native-speaker certification. Final idiom check: rendered giving a joke its own language as building its own story, rather than preserving a literal marketing metaphor."
+    },
+    "hr": {
+      "pass1": "complete",
+      "pass2": "self-reviewed",
+      "approvedContentHash": "462896d64e8af778d09ba9b5185f0f5a076f81f92cbd9bc1ac9115eef65e755c",
+      "issues": [],
+      "pass1ContentHash": "80a241d0bf62d8da85f24a79409348b8afbfe4e0a31b4f6ee4730a20c1e783fd",
+      "pass1Notes": "Read all fields against the source; rewrote chapter/order/clear/charger/distance calques, articles and UI in the target language. Second target-only pass remains required.",
+      "pass2Notes": "Re-read all Croatian fields. Smoothed the signature, order/okay ambiguity, print wording, titles and sketch/story joke; verified nekromancija in Hrvatska enciklopedija. Checked ijekavian forms, tko, pristanak, kralježnica and consistent informal UI. Not independent native review."
+    },
+    "bs": {
+      "pass1": "pending",
+      "pass2": "pending",
+      "approvedContentHash": null,
+      "issues": []
+    },
+    "sr": {
+      "pass1": "pending",
+      "pass2": "pending",
+      "approvedContentHash": null,
+      "issues": []
+    },
+    "cnr": {
+      "pass1": "pending",
+      "pass2": "pending",
+      "approvedContentHash": null,
+      "issues": []
+    },
+    "bg": {
+      "pass1": "pending",
+      "pass2": "pending",
+      "approvedContentHash": null,
+      "issues": []
+    },
+    "mk": {
+      "pass1": "pending",
+      "pass2": "pending",
+      "approvedContentHash": null,
+      "issues": []
+    },
+    "ru": {
+      "pass1": "pending",
+      "pass2": "pending",
+      "approvedContentHash": null,
+      "issues": []
+    },
+    "uk": {
+      "pass1": "pending",
+      "pass2": "pending",
+      "approvedContentHash": null,
+      "issues": []
+    },
+    "be": {
+      "pass1": "pending",
+      "pass2": "pending",
+      "approvedContentHash": null,
+      "issues": []
+    },
+    "csb": {
+      "pass1": "pending",
+      "pass2": "pending",
+      "approvedContentHash": null,
+      "issues": []
+    },
+    "szl": {
+      "pass1": "pending",
+      "pass2": "pending",
+      "approvedContentHash": null,
+      "issues": []
+    },
+    "hsb": {
+      "pass1": "pending",
+      "pass2": "pending",
+      "approvedContentHash": null,
+      "issues": []
+    },
+    "dsb": {
+      "pass1": "pending",
+      "pass2": "pending",
+      "approvedContentHash": null,
+      "issues": []
+    },
+    "rue": {
+      "pass1": "pending",
+      "pass2": "pending",
+      "approvedContentHash": null,
+      "issues": []
+    },
+    "rsk": {
+      "pass1": "pending",
+      "pass2": "pending",
+      "approvedContentHash": null,
+      "issues": []
+    }
+  }
+}

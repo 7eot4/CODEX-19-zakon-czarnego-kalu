@@ -20,4 +20,8 @@ Każda wersja ma osobny adres, np. `/en/`, `/th/`, `/csb/`, `/rsk/`, pełne pię
 
 Tłumaczenia są robocze (przygotowanie maszynowe i redakcja), nie po korekcie rodzimych użytkowników języka; szczególnie warianty regionalne wymagają takiej korekty. Informacja o wersji roboczej widoczna jest na przetłumaczonych stronach. Testy techniczne sprawdzają kompletność 162 pól na język, pięć artykułów i interakcje; nie stanowią certyfikacji jakości językowej. Generator przerywa pracę przy brakującym polu lub uszkodzonym znaczniku parametrów.
 
+Nadrzędna zasada: naturalny język rozmowy ma pierwszeństwo przed dosłownym przekładem. Szczegóły: `i18n/EDITORIAL-POLICY.md`. Przegląd ma dwa odrębne przebiegi — znaczeniowy i redakcyjny. Stan każdego języka oraz odcisk przejrzanego tekstu są w `i18n/review-status.json`; „self-reviewed” oznacza własną redakcję, bez deklaracji niezależnej korekty native speakera. Zmiana treści po takim przeglądzie wymaga jego ponowienia; generator sprawdza odcisk. Pomocnicze źródła rzeczywistego użycia terminów: `i18n/usage-sources.md`.
+
+Tło strony głównej ma dyskretną animację opadających cząstek w zatwierdzonym srebrnym kolorze. 24 cząstki na komputerze, 12 na telefonie; warstwa nie przechwytuje kliknięć ani fokusu, jest pomijana przez czytniki ekranu. Efekt znika po ograniczeniu ruchu i przy drukowaniu, a w nieaktywnej karcie jest wstrzymywany. Kolory i ogólny układ pozostają zatwierdzone. Wersje plików językowych i wspólnych zasobów wynikają z ich treści, aby przeglądarka pobierała opublikowane poprawki.
+
 Wizytówki drukować w skali 100%, bez nagłówków i stopek przeglądarki, z włączonym drukowaniem tła. Format netto 85 × 55 mm; wersja biurowa bez spadów. Drukarnia może wymagać osobnego przygotowania produkcyjnego.
